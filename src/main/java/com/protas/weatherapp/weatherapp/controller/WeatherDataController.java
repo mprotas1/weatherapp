@@ -1,16 +1,28 @@
 package com.protas.weatherapp.weatherapp.controller;
 
+import com.protas.weatherapp.weatherapp.dto.WeatherDataDTO;
+import com.protas.weatherapp.weatherapp.service.WeatherService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/data")
+@RequiredArgsConstructor
 public class WeatherDataController {
+    private final WeatherService weatherService;
 
     @PostMapping
-    ResponseEntity<String> saveData() {
-        return ResponseEntity.ok("Success!");
+    ResponseEntity<WeatherDataDTO> saveData(@RequestBody @Valid WeatherDataDTO weatherDataDTO) {
+        var data = weatherService.saveData(weatherDataDTO);
+        return ResponseEntity.ok(data);
+    }
+
+    @GetMapping
+    List<WeatherDataDTO> getAllData() {
+        return weatherService.findAll();
     }
 }
