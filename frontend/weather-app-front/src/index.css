@@ -1,0 +1,17 @@
+.weatherItems {
+  padding: 0;
+}
+
+.weatherItems h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.weatherItems ul {
+  list-style: none;
+  padding: 0;
+}
+
+.weatherItems li {
+  margin-bottom: 10px;
+}
