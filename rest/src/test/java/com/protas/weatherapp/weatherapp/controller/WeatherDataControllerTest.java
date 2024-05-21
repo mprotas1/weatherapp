@@ -1,9 +1,8 @@
 package com.protas.weatherapp.weatherapp.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.protas.weatherapp.weatherapp.dto.WeatherDataDTO;
+import com.protas.weatherapp.weatherapp.dto.WeatherDataRequest;
 import com.protas.weatherapp.weatherapp.model.TemperatureUnit;
-import jakarta.annotation.sql.DataSourceDefinition;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -28,7 +27,7 @@ public class WeatherDataControllerTest {
 
     @Test
     void shouldAddWeatherData() throws Exception {
-        WeatherDataDTO dto = new WeatherDataDTO(25.4, TemperatureUnit.CELSIUS, 1025);
+        WeatherDataRequest dto = new WeatherDataRequest(25.4, TemperatureUnit.CELSIUS, 1025);
         String body = objectMapper.writeValueAsString(dto);
 
         var result = mockMvc.perform(post("/data")
