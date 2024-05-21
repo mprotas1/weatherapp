@@ -1,0 +1,27 @@
+.weatherEntry {
+    display: flex;
+    align-items: center;
+}
+  
+.time {
+    font-weight: bold;
+    margin-right: 10px;
+}
+  
+.temperature {
+    margin-left: 10px;
+}
+  
+.divider {
+    border-left: 1px solid #ccc;
+    height: 100%;
+    margin: 0 10px;
+}
+  
+.weatherEntry:hover {
+    background-color: #f0f0f0;
+}
+
+.weatherEntry button {
+    margin-right: 1000;
+}
