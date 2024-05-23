@@ -16,17 +16,16 @@ import java.time.ZoneId;
 @RequiredArgsConstructor
 public class WeatherDataMapper {
     private final ModelMapper modelMapper;
+    private final TypeMap<WeatherDataRequest, WeatherData> requestToWeatherDataMap;
     private final Clock clock;
 
     public WeatherData fromRequest(WeatherDataRequest request) {
-        WeatherData weatherData = modelMapper.map(request, WeatherData.class);
+        WeatherData weatherData = requestToWeatherDataMap.map(request);
         weatherData.setDateTime(LocalDateTime.ofInstant(clock.instant(), ZoneId.systemDefault()));
         return weatherData;
     }
 
     public WeatherDataResponse toResponse(WeatherData weatherData) {
-        TypeMap<WeatherData, WeatherDataResponse> typeMap = modelMapper.createTypeMap(WeatherData.class, WeatherDataResponse.class)
-                .addMappings(mapper -> mapper.map(WeatherData::getDateTime, WeatherDataResponse::setCreationDateTime));
         return modelMapper.map(weatherData, WeatherDataResponse.class);
     }
 }
