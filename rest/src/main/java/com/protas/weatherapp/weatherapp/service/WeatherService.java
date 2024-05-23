@@ -20,7 +20,8 @@ public class WeatherService {
     private final WeatherDataMapper mapper;
 
     public WeatherDataResponse saveData(WeatherDataRequest weatherDataRequest) {
-        var data = mapper.fromRequest(weatherDataRequest);
+        WeatherData data = mapper.fromRequest(weatherDataRequest);
+        logger.info("WeatherDataRequest: {}", weatherDataRequest);
         WeatherData savedData = repository.save(data);
         logger.info("Created {}", savedData);
         return mapper.toResponse(savedData);

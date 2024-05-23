@@ -27,7 +27,10 @@ public class WeatherDataControllerTest {
 
     @Test
     void shouldAddWeatherData() throws Exception {
-        WeatherDataRequest dto = new WeatherDataRequest(25.4, TemperatureUnit.CELSIUS, 1025);
+        WeatherDataRequest dto = new WeatherDataRequest();
+        dto.setTemperature(25.5);
+        dto.setTemperatureUnit(TemperatureUnit.CELSIUS);
+        dto.setAtmosphericPressure(1000);
         String body = objectMapper.writeValueAsString(dto);
 
         var result = mockMvc.perform(post("/data")
