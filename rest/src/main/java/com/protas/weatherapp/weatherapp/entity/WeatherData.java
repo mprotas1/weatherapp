@@ -1,9 +1,6 @@
 package com.protas.weatherapp.weatherapp.entity;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.protas.weatherapp.weatherapp.converter.TemperatureUnitConverter;
 import com.protas.weatherapp.weatherapp.model.TemperatureUnit;
-import com.protas.weatherapp.weatherapp.serialize.TemperatureUnitDeserializer;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;

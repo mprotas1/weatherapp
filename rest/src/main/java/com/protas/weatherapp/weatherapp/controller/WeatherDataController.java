@@ -4,6 +4,7 @@ import com.protas.weatherapp.weatherapp.dto.WeatherDataRequest;
 import com.protas.weatherapp.weatherapp.dto.WeatherDataResponse;
 import com.protas.weatherapp.weatherapp.service.WeatherService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +24,20 @@ public class WeatherDataController {
     }
 
     @GetMapping
-    @CrossOrigin(origins = "http://localhost:5173")
+    @CrossOrigin(origins = "http://localhost:5173/")
     List<WeatherDataResponse> getAllData() {
         return weatherService.findAll();
+    }
+
+    @GetMapping("/mean")
+    @CrossOrigin(origins = "http://localhost:5173/")
+    Double getMean() {
+        return weatherService.getMean();
+    }
+
+    @DeleteMapping("/{id}")
+    @CrossOrigin(origins = "http://localhost:5173")
+    void deleteById(@PathVariable Long id) {
+        weatherService.deleteById(id);
     }
 }

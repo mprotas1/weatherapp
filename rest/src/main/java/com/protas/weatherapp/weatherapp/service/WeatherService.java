@@ -1,5 +1,6 @@
 package com.protas.weatherapp.weatherapp.service;
 
+import com.protas.weatherapp.weatherapp.converter.TemperatureConverter;
 import com.protas.weatherapp.weatherapp.dto.WeatherDataRequest;
 import com.protas.weatherapp.weatherapp.dto.WeatherDataResponse;
 import com.protas.weatherapp.weatherapp.entity.WeatherData;
@@ -28,8 +29,21 @@ public class WeatherService {
     }
 
     public List<WeatherDataResponse> findAll() {
-        return repository.findAll().stream()
+        List<WeatherData> data = repository.findAll();
+        return data.stream()
                 .map(mapper::toResponse)
                 .toList();
+    }
+
+    public Double getMean() {
+        var data = findAll();
+        return data.stream()
+                .mapToDouble(temperatureData -> TemperatureConverter.toCelsius(temperatureData.getTemperature(),temperatureData.getUnit()))
+                .average()
+                .orElse(0.0);
+    }
+
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
 }

@@ -23,7 +23,7 @@ public class WeatherDataMapper {
         WeatherData weatherData = requestToWeatherDataMap.map(request);
         weatherData.setDateTime(LocalDateTime.ofInstant(clock.instant(), ZoneId.systemDefault()));
         return weatherData;
-    }
+    } 
 
     public WeatherDataResponse toResponse(WeatherData weatherData) {
         return modelMapper.map(weatherData, WeatherDataResponse.class);
