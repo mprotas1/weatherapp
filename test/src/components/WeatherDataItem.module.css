@@ -1,0 +1,67 @@
+.weatherItem {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 2fr 2fr;
+  gap: 10px;
+  background-color: #f5f5dc;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: Roboto, Oxygen, Ubuntu, sans-serif;
+  font-size: 18px;
+  border-radius: 15px;
+  align-items: center;
+}
+
+.weatherItem:hover {
+  background-color: rgba(245, 245, 220, 55%);
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+}
+
+.item {
+  padding: 1%;
+  word-wrap: break-word;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.weather_delete_button, .weather_edit_button {
+  border-radius: 5px;
+  flex: 1;
+  padding: 1%;
+  background-color: rgba(230, 63, 63, 0.856);
+  width: 50%;
+  height: auto;
+  font-family: Roboto, Oxygen, Ubuntu, sans-serif;
+  font-size: 18px;
+  text-align: center;
+}
+
+.weather_edit_button {
+  background-color: #2a6cb2cc;
+}
+
+.weather_delete_button:hover {
+  background-color: #e63f3f8c;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+}
+
+.weather_edit_button:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.3);
+  background-color: rgba(42, 108, 178, 0.55);
+}
+
+@media screen and (max-width: 768px) {
+  .weatherItem {
+      grid-template-columns: 1fr;
+  }
+
+  .actions {
+      flex-direction: column;
+  }
+}
